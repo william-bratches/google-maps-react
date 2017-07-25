@@ -33,7 +33,6 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(initServices, dispatch);
 };
 
-// TODO: refactor this to router
 const withGoogleState = GoogleApiWrapper({
   apiKey: GOOGLE_API_KEY,
 })(MapView);

@@ -1,9 +1,11 @@
+import { geoCode } from './geoCode';
+
 const requestDefaults = {
   radius: '500',
   types: ['restaurant']
 };
 
-const init = (props, map) => {
+const initPlaces = (props, map) => {
   const { google } = props;
   const service = new google.maps.places.PlacesService(map);
   return Promise.resolve(service);
@@ -14,14 +16,17 @@ const init = (props, map) => {
 const query = (search, props) => {
   const { placesService } = props.services;
   const request = { ...search, requestDefaults };
+  // TODO: leaving off: geocode here
   return new Promise((resolve, reject) => {
     placesService.nearbySearch(request, (results, status) => {
+      // TODO: what is status?
+      // if (status !== ok) reject()
       return resolve(results);
     });
   });
 }
 
 export {
-  init,
+  initPlaces,
   query,
 }

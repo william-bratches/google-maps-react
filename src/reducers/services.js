@@ -1,9 +1,15 @@
-import { PLACES_INITIALIZED, PLACES_DATA_RECEIVED } from '../actions/services';
+import { MAP_INITIALIZED, PLACES_INITIALIZED, PLACES_DATA_RECEIVED, GEOCODE_INITIALIZED } from '../actions/services';
 import createReducer from '../lib/createReducer';
 
 const initialState = { placesService: {} };
 
 export default createReducer(initialState, {
+  [MAP_INITIALIZED](state, action) {
+    return {
+      ...state,
+      googleService: action.google,
+    }
+  },
   [PLACES_INITIALIZED](state, action) {
     return {
       ...state,
@@ -15,5 +21,11 @@ export default createReducer(initialState, {
       ...state,
       placesData: action.data,
     }
-  }
+  },
+  [GEOCODE_INITIALIZED](state, action) {
+    return {
+      ...state,
+      geoCodeService: action.geoCodeService,
+    }
+  },
 });
