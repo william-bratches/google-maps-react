@@ -1,4 +1,4 @@
-import { PLACES_INITIALIZED } from '../actions/services';
+import { PLACES_INITIALIZED, PLACES_DATA_RECEIVED } from '../actions/services';
 import createReducer from '../lib/createReducer';
 
 const initialState = { placesService: {} };
@@ -10,4 +10,10 @@ export default createReducer(initialState, {
       placesService: action.placesService,
     };
   },
+  [PLACES_DATA_RECEIVED](state, action) {
+    return {
+      ...state,
+      placesData: action.data,
+    }
+  }
 });

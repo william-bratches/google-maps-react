@@ -1,25 +1,27 @@
-// TODO: generate request from props
-const request = {
-  location: '18 Hyde Park Ave',
+const requestDefaults = {
   radius: '500',
   types: ['restaurant']
 };
 
-const init = (mapProps, map) => {
-  const { google } = mapProps;
-  return Promise.resolve(new google.maps.places.PlacesService(map));
+const init = (props, map) => {
+  const { google } = props;
+  const service = new google.maps.places.PlacesService(map);
+  return Promise.resolve(service);
 }
 
 // places api doesn't take a radius with text search.
 // geocode an address into a lat/lng for a "nearby" search instead.
-const fetchPlaces = (request, props) => {
-  // request will come from an action
-  props.placesService.textSearch(request, function(results, status) {
-    console.log(results);
+const query = (search, props) => {
+  const { placesService } = props.services;
+  const request = { ...search, requestDefaults };
+  return new Promise((resolve, reject) => {
+    placesService.nearbySearch(request, (results, status) => {
+      return resolve(results);
+    });
   });
 }
 
 export {
   init,
-  fetchPlaces,
+  query,
 }

@@ -6,7 +6,6 @@ import { withRouter } from 'react-router';
 
 class Search extends Component {
   // TODO: error handling for empty values
-  // TODO:
   constructor(props) {
     super(props);
     this.state = {
@@ -26,11 +25,12 @@ class Search extends Component {
   }
 
   render() {
+    // TODO: get prettier and lint working
     return (
       <div>
         <input type='text' name='address'placeholder='Address' onChange={this.handleChange}/>
         <input type='number' name='radius' placeholder='Radius' onChange={this.handleChange}/>
-        <button onClick={this.props.searchPlaces}>Search</button>
+        <button onClick={() => this.props.searchPlaces(this.state, this.props)}>Search</button>
       </div>
     )
   }
