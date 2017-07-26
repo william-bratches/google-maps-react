@@ -1,13 +1,14 @@
 import React from 'react';
 import MapView from './map';
 import PlacesList from './placesList';
+import '../../styles/style.css';
 
 const Map = () =>
-  <div class='container'>
-    <div class='child-25'>
+  <div className='container'>
+    <div className='child-25'>
       <PlacesList />
     </div>
-    <div class='child-75'>
+    <div>
       <MapView />
     </div>
   </div>
