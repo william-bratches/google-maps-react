@@ -1,8 +1,9 @@
 import { geoCode } from './geoCode';
 
+// TODO: refactor so services do not live in state
 const requestDefaults = {
   radius: '500',
-  types: ['restaurant']
+  type: ['restaurant']
 };
 
 const initPlaces = (props, map) => {
@@ -11,18 +12,22 @@ const initPlaces = (props, map) => {
   return Promise.resolve(service);
 }
 
-// places api doesn't take a radius with text search.
-// geocode an address into a lat/lng for a "nearby" search instead.
-const query = (search, props) => {
-  const { placesService } = props.services;
-  const request = { ...search, requestDefaults };
-  // TODO: leaving off: geocode here
+const nearbySearch = (request, service) => {
   return new Promise((resolve, reject) => {
-    placesService.nearbySearch(request, (results, status) => {
-      // TODO: what is status?
-      // if (status !== ok) reject()
+    service.nearbySearch(request, (results, status) => {
+      if (status !== 'OK') reject(status);
       return resolve(results);
     });
+  });
+}
+
+const query = (search, props) => {
+  const { placesService } = props.services;
+  const { radius } = search;
+  // address -> latLng
+  return geoCode(search.address, props).then(latLng => {
+    const request = { location: latLng, radius, requestDefaults };
+    return nearbySearch(request, placesService);
   });
 }
 

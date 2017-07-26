@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Search from './map/search';
-import MainMap from './map/map';
+import Map from './map/index';
 
 const Router = () =>
   <BrowserRouter>
     <div>
       <Search />
-      <Route exact path="/" component={MainMap} />
+      <Route exact path="/" component={Map} />
     </div>
   </BrowserRouter>;
 

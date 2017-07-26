@@ -1,3 +1,5 @@
+// TODO: refactor so services do not live in state
+
 const initGeoCode = (props) => {
   const { google } = props;
   const service = new google.maps.Geocoder();
@@ -8,8 +10,7 @@ const geoCode = (address, props) => {
   const { geoCodeService } = props.services;
   return new Promise((resolve, reject) => {
     geoCodeService.geocode({ address }, (results, status) => {
-      // TODO: what is status?
-      // if (status !== ok) reject()
+      if (status !== 'OK') reject(status);
       return resolve(results[0].geometry.location);
     });
   });

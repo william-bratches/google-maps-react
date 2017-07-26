@@ -21,6 +21,7 @@ export default {
       })
     };
   },
+  // TODO: consistent naming
   searchPlaces(search, props) {
     return dispatch => {
       query(search, props).then(data => {
