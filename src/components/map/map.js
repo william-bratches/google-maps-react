@@ -12,22 +12,6 @@ const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const DEFAULT_ZOOM = 14;
 
 class MapView extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onMarkerClick = this.onMarkerClick.bind(this);
-    this.onMapClick = this.onMapClick.bind(this);
-  }
-  onMarkerClick(props, marker) {
-    this.props.markerClick(props, marker)
-  }
-
-  onMapClick(props) {
-    if (this.props.markers.showingInfoWindow) {
-      this.props.mapClick(props)
-    }
-  }
-
   render() {
     const places = get(this.props, 'services.placesData', []);
     const markerData = get(this.props, 'markers.selectedPlace.data', {});
@@ -41,9 +25,9 @@ class MapView extends React.Component {
           lat: NEW_YORK.lat, // TODO: object destructuring is not working here.
           lng: NEW_YORK.lng,
         }}
-        onClick={this.onMapClick}>
+        onClick={this.props.mapClick}>
 
-        {/* Markers */}
+        {/* Marker Description */}
         <InfoWindow
           marker={this.props.markers.activeMarker}
           visible={this.props.markers.showingInfoWindow}>
@@ -55,10 +39,11 @@ class MapView extends React.Component {
             </div>
         </InfoWindow>
 
+        {/* Markers */}
        {places.map(place =>
           <Marker
             key={place.id}
-            onClick={this.onMarkerClick}
+            onClick={this.props.markerClick}
             title={place.name}
             data={place}
             position={place.geometry.location}
