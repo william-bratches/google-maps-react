@@ -2,14 +2,13 @@ import { MARKER_CLICKED, MAP_CLICKED } from '../actions/markers';
 import createReducer from '../lib/createReducer';
 
 const initialState = {
-  selectedPlace: {},
+  selectedPlace: { title: '' },
   activeMarker: {},
   showingInfoWindow: false,
 };
 
 export default createReducer(initialState, {
   [MARKER_CLICKED](state, action) {
-    console.log(action);
     return {
       ...state,
       selectedPlace: action.marker.props,
@@ -20,7 +19,7 @@ export default createReducer(initialState, {
   [MAP_CLICKED](state, action) {
     return {
       ...state,
-      selectedPlace: null,
+      selectedPlace: { title: '' },
       activeMarker: null,
       showingInfoWindow: false,
     }

@@ -1,9 +1,9 @@
 import React from 'react';
 import Map from 'google-maps-react';
-// import MarkerDescription from './markerDescription';
+import MarkerDescription from './markerDescription';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { GoogleApiWrapper, Marker } from 'google-maps-react';
+import { GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import { withRouter } from 'react-router';
 import { get } from 'lodash';
 import services from '../../actions/services';
@@ -30,8 +30,8 @@ class MapView extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const places = get(this.props, 'services.placesData', []);
+    console.log(this.props);
     return (
       <Map
         google={this.props.google}
@@ -43,8 +43,18 @@ class MapView extends React.Component {
         }}
         onClick={this.onMapClick}>
 
-        {places.map(place =>
+        {/* Markers */}
+        <InfoWindow
+          marker={this.props.markers.activeMarker}
+          visible={this.props.markers.showingInfoWindow}>
+            <div>
+              <h1>{this.props.markers.selectedPlace.title}</h1>
+            </div>
+        </InfoWindow>
+
+       {places.map(place =>
           <Marker
+            key={place.id}
             onClick={this.onMarkerClick}
             title={place.name}
             position={place.geometry.location}

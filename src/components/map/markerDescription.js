@@ -1,19 +1,14 @@
-// import React from 'react';
-// import { InfoWindow } from 'google-maps-react';
-// import { connect } from 'react-redux';
-//
-// const MarkerDescription = () => (
-//   <InfoWindow
-//     marker={this.props.markers.activeMarker}
-//     visible={this.props.markers.showingInfoWindow}>
-//       <div>
-//         <h1>{this.props.markers.selectedPlace.name}</h1>
-//       </div>
-//   </InfoWindow>
-// )
-//
-// const mapStateToProps = state => {
-//   return Object.assign({}, state);
-// };
-//
-// export default connect(mapStateToProps)(MarkerDescription);
+import React from 'react';
+import { InfoWindow } from 'google-maps-react';
+
+const MarkerDescription = ({props}) => (
+  <InfoWindow
+    marker={props.markers.activeMarker}
+    visible={props.markers.showingInfoWindow}>
+      <div>
+        <h1>{props.markers.selectedPlace.name}</h1>
+      </div>
+  </InfoWindow>
+)
+
+export default MarkerDescription;
