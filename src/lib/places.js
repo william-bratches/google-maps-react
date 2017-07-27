@@ -1,4 +1,5 @@
 import { geoCode } from './geoCode';
+import { extend } from 'lodash';
 
 // TODO: refactor so services do not live in state
 const requestDefaults = {
@@ -12,7 +13,8 @@ const initPlaces = (props, map) => {
   return Promise.resolve(service);
 }
 
-const nearbySearch = (request, service) => {
+const nearbySearch = (userRequest, service) => {
+  const request = extend(userRequest, requestDefaults);
   return new Promise((resolve, reject) => {
     service.nearbySearch(request, (results, status) => {
       if (status !== 'OK') reject(status);

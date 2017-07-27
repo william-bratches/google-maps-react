@@ -1,9 +1,10 @@
 import React from 'react';
 
-const PlacesRow= ({ place }) =>
+const PlacesRow = ({ place }) =>
   <tr>
-    <td>Hello</td>
-    <td>World</td>
+    <td>{place.name}</td>
+    <td>{place.rating}</td>
+    <td>{place.price_level}</td>
   </tr>
 
 export default PlacesRow;
