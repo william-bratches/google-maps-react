@@ -1,6 +1,5 @@
 import React from 'react';
 import Map from 'google-maps-react';
-import MarkerDescription from './markerDescription';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
@@ -31,7 +30,8 @@ class MapView extends React.Component {
 
   render() {
     const places = get(this.props, 'services.placesData', []);
-    console.log(this.props);
+    const markerData = get(this.props, 'markers.selectedPlace.data', {});
+    const priceLevel = get(markerData, 'price_level', 'Unknown');
     return (
       <Map
         google={this.props.google}
@@ -49,6 +49,9 @@ class MapView extends React.Component {
           visible={this.props.markers.showingInfoWindow}>
             <div>
               <h1>{this.props.markers.selectedPlace.title}</h1>
+              <p>{markerData.vicinity}</p>
+              <p>Rating: {markerData.rating}</p>
+              <p>Price Level: {priceLevel}</p>
             </div>
         </InfoWindow>
 
@@ -57,6 +60,7 @@ class MapView extends React.Component {
             key={place.id}
             onClick={this.onMarkerClick}
             title={place.name}
+            data={place}
             position={place.geometry.location}
           />)}
       </Map>
