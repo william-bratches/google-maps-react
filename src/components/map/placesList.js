@@ -1,21 +1,22 @@
+// TODO: rename this, make better folder hierarchy for sub components
+
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
+import { get } from 'lodash';
+import PlacesTable from './placesTable';
 
 class PlacesList extends Component {
   render() {
+    const places = get(this.props, 'services.placesData', []);
     return (
-      <div>
-        <table>
-          <th>Name</th>
-          <th>Price</th>
-
-          <tr>
-            <td>Hello</td>
-            <td>World</td>
-          </tr>
-        </table>
-      </div>
+      <PlacesTable places={places} />
     )
   }
 }
 
-export default PlacesList;
+const mapStateToProps = state => {
+  return Object.assign({}, state);
+}
+
+export default withRouter(connect(mapStateToProps)(PlacesList));
