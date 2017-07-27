@@ -5,3 +5,9 @@
 .child-25 {
   flex-basis: 25%;
 }
+
+.chart-container {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}

@@ -3,6 +3,7 @@ import searchPlaces from '../../actions/services';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Search extends Component {
   // TODO: error handling for empty values
@@ -10,8 +11,8 @@ class Search extends Component {
     super(props);
     this.state = {
       address: '',
-      radius: 0,
-    }
+      radius: 0
+    };
     this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
@@ -20,7 +21,7 @@ class Search extends Component {
     const value = target.value;
 
     this.setState({
-      [name]: value,
+      [name]: value
     });
   }
 
@@ -28,11 +29,26 @@ class Search extends Component {
     // TODO: get prettier and lint working
     return (
       <div>
-        <input type='text' name='address'placeholder='Address' onChange={this.handleChange}/>
-        <input type='number' name='radius' placeholder='Radius' onChange={this.handleChange}/>
-        <button onClick={() => this.props.searchPlaces(this.state, this.props)}>Search</button>
+        <input
+          type="text"
+          name="address"
+          placeholder="Address"
+          onChange={this.handleChange}
+        />
+        <input
+          type="number"
+          name="radius"
+          placeholder="Radius"
+          onChange={this.handleChange}
+        />
+        <button onClick={() => this.props.searchPlaces(this.state, this.props)}>
+          Search
+        </button>
+        <nav>
+          <Link to="/priceRating">Dashboard</Link>
+        </nav>
       </div>
-    )
+    );
   }
 }
 
