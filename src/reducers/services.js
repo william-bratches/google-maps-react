@@ -1,7 +1,7 @@
 import { MAP_INITIALIZED, PLACES_INITIALIZED, PLACES_DATA_RECEIVED, GEOCODE_INITIALIZED } from '../actions/services';
 import createReducer from '../lib/createReducer';
 
-const initialState = { placesService: {} };
+const initialState = { placesService: { placesData: [] } };
 
 export default createReducer(initialState, {
   [MAP_INITIALIZED](state, action) {

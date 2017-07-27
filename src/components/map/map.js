@@ -1,26 +1,55 @@
 import React from 'react';
 import Map from 'google-maps-react';
+// import MarkerDescription from './markerDescription';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { GoogleApiWrapper } from 'google-maps-react';
+import { GoogleApiWrapper, Marker } from 'google-maps-react';
 import { withRouter } from 'react-router';
-import initServices from '../../actions/services';
+import { get } from 'lodash';
+import services from '../../actions/services';
+import markers from '../../actions/markers';
 const NEW_YORK = { lat: 40.736381, lng: -74.030559 }
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const DEFAULT_ZOOM = 14;
 
 class MapView extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
+  }
+  onMarkerClick(props, marker) {
+    this.props.markerClick(props, marker)
+  }
+
+  onMapClick(props) {
+    if (this.props.markers.showingInfoWindow) {
+      this.props.mapClick(props)
+    }
+  }
+
   render() {
+    console.log(this.props);
+    const places = get(this.props, 'services.placesData', []);
     return (
       <Map
         google={this.props.google}
         zoom={DEFAULT_ZOOM}
         onReady={this.props.initServices}
         center={{
-          lat: NEW_YORK.lat, // object destructuring is not working here.
+          lat: NEW_YORK.lat, // TODO: object destructuring is not working here.
           lng: NEW_YORK.lng,
         }}
-      />
+        onClick={this.onMapClick}>
+
+        {places.map(place =>
+          <Marker
+            onClick={this.onMarkerClick}
+            title={place.name}
+            position={place.geometry.location}
+          />)}
+      </Map>
     );
   }
 }
@@ -30,7 +59,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators(initServices, dispatch);
+  return bindActionCreators({ ...services, ...markers }, dispatch);
 };
 
 const withGoogleState = GoogleApiWrapper({
