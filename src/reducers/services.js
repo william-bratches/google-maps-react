@@ -25,7 +25,8 @@ export default createReducer(initialState, {
   [PLACES_DATA_RECEIVED](state, action) {
     return {
       ...state,
-      placesData: action.data
+      placesData: action.data.results,
+      originalRequest: action.data.request
     };
   },
   [GEOCODE_INITIALIZED](state, action) {

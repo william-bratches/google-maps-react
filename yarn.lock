@@ -2039,6 +2039,10 @@ duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
 
+earth-radius-at-geodetic-latitude@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/earth-radius-at-geodetic-latitude/-/earth-radius-at-geodetic-latitude-1.0.1.tgz#a1c8226b53b0a5774a0df00624de4dac1a67a532"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -2748,6 +2752,12 @@ generate-object-property@^1.1.0:
   resolved "https://registry.yarnpkg.com/generate-object-property/-/generate-object-property-1.2.0.tgz#9c0e1c40308ce804f4783618b937fa88f99d50d0"
   dependencies:
     is-property "^1.0.0"
+
+geodetic-haversine-distance@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/geodetic-haversine-distance/-/geodetic-haversine-distance-1.0.1.tgz#edc8da6985e9eb8d04f3c8276df9a7b437365b18"
+  dependencies:
+    earth-radius-at-geodetic-latitude "^1.0.0"
 
 get-caller-file@^1.0.1:
   version "1.0.2"

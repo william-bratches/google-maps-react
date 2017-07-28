@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "geodetic-haversine-distance": "^1.0.1",
     "google-maps-react": "^1.0.19",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.2",

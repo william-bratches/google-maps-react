@@ -18,7 +18,7 @@ const nearbySearch = (userRequest, service) => {
   return new Promise((resolve, reject) => {
     service.nearbySearch(request, (results, status) => {
       if (status !== 'OK') reject(status);
-      return resolve(results);
+      return resolve({ results, request });
     });
   });
 };
@@ -33,24 +33,24 @@ const query = (search, props) => {
   });
 };
 
-const getSinglePlaceDetails = (request, service) => {
-  return new Promise((resolve, reject) => {
-    return service.getDetails(request, (results, status) => {
-      if (status !== 'OK') reject(status);
-      return resolve(results);
-    });
-  });
-};
+/*
+  The free tier of the google api prevents a large query ops like this -
+  will return error OVER_QUERY_LIMIT. Thus, I was unable to actually test
+  this feature. Instead, I'm going to return random opening hours.
+*/
+
+// const getSinglePlaceDetails = (request, service) => {
+//   return new Promise((resolve, reject) => {
+//     return service.getDetails(request, (results, status) => {
+//       if (status !== 'OK') reject(status);
+//       return resolve(results);
+//     });
+//   });
+// };
 
 // Google API does not return opening hours details on place search
 // Need to perform a "Detail" lookup for every entry in places array
 const getMultiplePlaceDetails = props => {
-  /*
-    The free tier of the google api prevents a large query like this -
-    will return error OVER_QUERY_LIMIT. Thus, I was unable to actually test
-    this feature. Instead, I'm going to return random opening hours.
-  */
-
   // const { placesService } = props.services;
   const places = get(props, 'services.placesData');
   // const promises = places.map(place => {

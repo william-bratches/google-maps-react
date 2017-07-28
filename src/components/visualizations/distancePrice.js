@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { bindActionCreators } from 'redux';
-import { VictoryChart, VictoryBar, VictoryLabel, VictoryGroup } from 'victory';
+import { get } from 'lodash';
+import { VictoryBar, VictoryLabel, VictoryGroup } from 'victory';
 import { distancePrice } from '../../lib/dataFormatter';
 import '../../styles/style.css';
 
 class DistancePrice extends Component {
   render() {
+    const placesData = get(this.props, 'services.placesData', []);
     return (
       <div>
         <VictoryGroup
@@ -18,19 +19,11 @@ class DistancePrice extends Component {
         >
           <VictoryBar
             color="green"
-            data={[
-              { x: 'hello', y: 1 },
-              { x: 'world', y: 2 },
-              { x: 'foo', y: 5 }
-            ]}
+            data={distancePrice(placesData, this.props).prices}
           />
           <VictoryBar
             color="grey"
-            data={[
-              { x: 'hello', y: 2 },
-              { x: 'world', y: 1 },
-              { x: 'foo', y: 7 }
-            ]}
+            data={distancePrice(placesData, this.props).distances}
           />
 
           <VictoryLabel
