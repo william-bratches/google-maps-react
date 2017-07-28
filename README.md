@@ -7,7 +7,7 @@ The google API key in the .env is a public one provided by react-create-maps. Fe
 Run `yarn start`. The app will be available at port 3000.
 
 # Future additions
-I unfortunately lack the time I wanted to give this app a professional UX polish.
+I unfortunately lack the time to give this app a professional UX polish.
 Things I want to add:
 * Can trigger places query with enter button
 * Click on a list item highlights markerData
