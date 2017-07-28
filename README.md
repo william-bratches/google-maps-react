@@ -1,7 +1,7 @@
 # Installation
 Run `yarn install`.
 
-The google API key in the .env is a public one provided by react-create-maps. Feel free to fill in your own.
+The google API key in the .env is a public one provided by react-google-maps. Feel free to fill in your own.
 
 # Running the app
 Run `yarn start`. The app will be available at port 3000.
