@@ -14,7 +14,7 @@ Things I want to add:
 * Query bar stays in chart views (need to rethink google map initialization flow...)
 * More advanced chart features (highlighting, tooltip drilldown)
 * Better, more creative visualizations in general
-* Better error handling (i.e. highlighting red in field, isntead of annoying alert)
+* Better error handling (i.e. highlighting red in field, instead of annoying alert)
 * Figure out more consistent naming scheme between actions and reducers
 * Alphabetize objects, code naming details
 * Better visual design (I am admittedly not a UX designer)
