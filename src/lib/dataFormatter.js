@@ -44,7 +44,7 @@ const distancePrice = (places, props) => {
 
   const distances = filteredPlaces.map(place => {
     return {
-      x: place.title,
+      x: place.name,
       y: haversineDistance(
         latLng(place.geometry.location),
         latLng(originalLatLng)
@@ -54,12 +54,10 @@ const distancePrice = (places, props) => {
 
   const prices = filteredPlaces.map(place => {
     return {
-      x: place.title,
-      y: place.price_level
+      x: place.name,
+      y: place.price_level * 15 // for scale
     };
   });
-
-  console.log(distances);
 
   return { distances, prices };
 };

@@ -3,10 +3,17 @@ Run `yarn install`.
 
 Run `sudo cp .env.example .env`
 
-Fill in your GOOGLE_KEY and GOOGLE_[whatever] in the .
+The google API key in the .env is a public one provided by react-create-maps. Feel free to fill in your own.
 
 # Running the app
 Run `yarn start`. The app will be available at port 3000.
 
-# A note on structure
-Normally I like to separate stateful "controller" components from hydrating stateless "view" components. The google maps initialization flow made this less elegant that I would liked it to have been, since the service initialization is dependent on a DOM ready event being fired. To bubble up local map state to the redux state back down to a "stateless" map view again would have been extremely redundant. Thus, the map component is less elegant that I would have liked. Maybe with more time I could have come up with a better solution...
+# Future additions
+I unfortunately didn't quite have the time I wanted to give this app a professional UX polish.
+Things I want to add:
+* Can trigger places query with enter button
+* Click on a list item highlights markerData
+* Query bar stays in chart views (need to rethink google map initialization flow...)
+* More advanced chart features (highlighting, tooltip drilldown)
+* Better, more creative visualizations in general
+* Better error handling (i.e. highlighting red in field, isntead of annoying alert)

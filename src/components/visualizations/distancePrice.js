@@ -15,6 +15,11 @@ class DistancePrice extends Component {
           offset={20}
           colorScale={'qualitative'}
           labels={datum => datum.x}
+          style={{
+            labels: {
+              fontSize: 4
+            }
+          }}
           labelComponent={<VictoryLabel dy={0} />}
         >
           <VictoryBar
