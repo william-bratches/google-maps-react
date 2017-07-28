@@ -9,11 +9,13 @@ import {
 } from 'victory';
 import { priceRating } from '../../lib/dataFormatter';
 import '../../styles/style.css';
+import BackButton from '../common/backButton';
 
 class PriceRating extends Component {
   render() {
     return (
       <div className="chart-container">
+        <BackButton />
         <VictoryChart
           theme={VictoryTheme.material}
           domain={{ x: [0, 4], y: [0, 5] }}

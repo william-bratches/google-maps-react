@@ -11,6 +11,7 @@ import {
 import { wordsHoursPrice } from '../../lib/dataFormatter';
 import services from '../../actions/services';
 import '../../styles/style.css';
+import BackButton from '../common/backButton';
 
 class WordsHoursPrice extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class WordsHoursPrice extends Component {
   render() {
     return (
       <div className="chart-container">
+        <BackButton />
         <VictoryChart
           theme={VictoryTheme.material}
           domain={{ x: [0, 170], y: [0, 5] }}

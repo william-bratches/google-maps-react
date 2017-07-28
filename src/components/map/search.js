@@ -3,10 +3,8 @@ import searchPlaces from '../../actions/services';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 
 class Search extends Component {
-  // TODO: error handling for empty values
   constructor(props) {
     super(props);
     this.state = {
@@ -25,9 +23,16 @@ class Search extends Component {
     });
   }
 
+  fetchPlaces() {
+    if (!this.state.address || !this.state.radius) {
+      return alert('Please fill in both fields before searching.');
+    }
+    this.props.searchPlaces(this.state, this.props);
+  }
+
   render() {
     return (
-      <div>
+      <div className="container">
         <input
           type="text"
           name="address"
@@ -40,18 +45,9 @@ class Search extends Component {
           placeholder="Radius"
           onChange={this.handleChange}
         />
-        <button onClick={() => this.props.searchPlaces(this.state, this.props)}>
+        <div className="action-button" onClick={() => this.fetchPlaces()}>
           Search
-        </button>
-        <nav>
-          <Link to="/priceRating">pr</Link>
-        </nav>
-        <nav>
-          <Link to="/wordsHoursPrice">whp</Link>
-        </nav>
-        <nav>
-          <Link to="/distancePrice">dp</Link>
-        </nav>
+        </div>
       </div>
     );
   }

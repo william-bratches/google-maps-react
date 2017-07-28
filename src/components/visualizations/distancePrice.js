@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import { get } from 'lodash';
 import { VictoryBar, VictoryLabel, VictoryGroup } from 'victory';
 import { distancePrice } from '../../lib/dataFormatter';
+import BackButton from '../common/backButton';
 import '../../styles/style.css';
 
 class DistancePrice extends Component {
@@ -11,6 +12,7 @@ class DistancePrice extends Component {
     const placesData = get(this.props, 'services.placesData', []);
     return (
       <div>
+        <BackButton />
         <VictoryGroup
           offset={20}
           colorScale={'qualitative'}
