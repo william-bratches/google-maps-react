@@ -18,4 +18,4 @@ Things I want to add:
 * Figure out more consistent naming scheme between actions and reducers
 * Alphabetize objects, code naming details
 * Better visual design (I am admittedly not a UX designer)
-* CSS stylesheet is pretty basic. Ideally, it would be SASS (or CSS4!) that composites multiple classes.
+* CSS stylesheet is pretty basic. Ideally, it would be SASS or SCSS that composites multiple well-ordered classes.
