@@ -27,8 +27,9 @@
 }
 
 .action-button {
+  cursor: pointer;
   font-family: Arial;
-  background: #c72424;
+  background: #ff6666;
   border-radius: 14px;
   font-size: 12px;
   padding: 10px 20px 10px 20px;

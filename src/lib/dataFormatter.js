@@ -62,4 +62,4 @@ const distancePrice = (places, props) => {
   return { distances, prices };
 };
 
-export { priceRating, wordsHoursPrice, distancePrice };
+export { priceRating, wordsHoursPrice, distancePrice, latLng };

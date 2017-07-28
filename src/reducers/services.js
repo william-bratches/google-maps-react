@@ -6,8 +6,10 @@ import {
   CHART_INITIALIZED
 } from '../actions/services';
 import createReducer from '../lib/createReducer';
+import { latLng } from '../lib/dataFormatter';
+const NEW_YORK = { latitude: 40.736381, longitude: -74.030559 };
 
-const initialState = { placesData: [], placesDetails: [] };
+const initialState = { placesData: [], placesDetails: [], center: NEW_YORK };
 
 export default createReducer(initialState, {
   [MAP_INITIALIZED](state, action) {
@@ -26,7 +28,8 @@ export default createReducer(initialState, {
     return {
       ...state,
       placesData: action.data.results,
-      originalRequest: action.data.request
+      originalRequest: action.data.request,
+      center: latLng(action.data.request.location)
     };
   },
   [GEOCODE_INITIALIZED](state, action) {

@@ -7,7 +7,6 @@ import { withRouter } from 'react-router';
 import { get } from 'lodash';
 import services from '../../actions/services';
 import markers from '../../actions/markers';
-const NEW_YORK = { lat: 40.736381, lng: -74.030559 };
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const DEFAULT_ZOOM = 14;
 
@@ -22,8 +21,8 @@ class MapView extends React.Component {
         zoom={DEFAULT_ZOOM}
         onReady={this.props.initServices}
         center={{
-          lat: NEW_YORK.lat, // object destructuring is not working here.
-          lng: NEW_YORK.lng
+          lat: this.props.services.center.latitude, // object destructuring does not work here..
+          lng: this.props.services.center.longitude
         }}
         onClick={this.props.mapClick}
       >
