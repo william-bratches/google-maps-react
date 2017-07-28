@@ -11,7 +11,7 @@ const PlacesRow = ({ place }) =>
           ★{place.rating}
         </p>
         <p className="green">
-          ${place.price_level || 'Unknown'}
+          Price Level: {place.price_level || 'Unknown'}
         </p>
       </div>
     </td>

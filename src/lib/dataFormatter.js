@@ -29,6 +29,20 @@ const wordsHoursPrice = places => {
     });
 };
 
+const sortPlaces = (props, property) => {
+  const places = get(props, 'services.placesData', []);
+  const sortDirection = get(props, 'services.sortDirection', 0);
+
+  const sortedPlaces = places.sort((prev, next) => {
+    if (sortDirection) {
+      return get(next, property, 0) - get(prev, property, 0);
+    }
+    return get(prev, property, 0) - get(next, property, 0);
+  });
+
+  return Promise.resolve(sortedPlaces);
+};
+
 const latLng = googleLatLng => {
   return {
     latitude: googleLatLng.lat(),
@@ -62,4 +76,4 @@ const distancePrice = (places, props) => {
   return { distances, prices };
 };
 
-export { priceRating, wordsHoursPrice, distancePrice, latLng };
+export { priceRating, wordsHoursPrice, distancePrice, latLng, sortPlaces };
