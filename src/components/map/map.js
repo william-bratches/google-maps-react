@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 import { get } from 'lodash';
 import services from '../../actions/services';
 import markers from '../../actions/markers';
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 const DEFAULT_ZOOM = 14;
 
 class MapView extends React.Component {
