@@ -1,7 +1,6 @@
 import { geoCode } from './geoCode';
 import { get, extend } from 'lodash';
 
-// TODO: refactor so services do not live in state
 const requestDefaults = {
   radius: '500',
   type: ['restaurant']

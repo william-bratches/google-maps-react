@@ -1,5 +1,3 @@
-// TODO: rename this, make better folder hierarchy for sub components
-
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -14,7 +12,6 @@ class PlacesList extends Component {
   }
   render() {
     const places = get(this.props, 'services.placesData', []);
-    //onClick={this.props.sortPlaces(this.props, 'price_level')}
     return (
       <div>
         <div className="container">
