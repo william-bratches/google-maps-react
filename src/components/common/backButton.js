@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom';
 
 const BackButton = () =>
   <div className="container">
-    <div className="viz-button">
-      <Link className="undecorated" to="/">
-        Back
-      </Link>
-    </div>
+    <Link className="viz-button" to="/">
+      <div className="undecorated">Back</div>
+    </Link>
   </div>;
 
 export default BackButton;

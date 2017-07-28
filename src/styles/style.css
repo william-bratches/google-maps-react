@@ -40,6 +40,7 @@
 }
 
 .viz-button {
+  cursor: pointer;
   font-family: Arial;
   background: #3498db;
   border-radius: 8px;
@@ -47,7 +48,6 @@
   padding: 10px 20px 10px 20px;
   text-decoration: none;
 }
-
 .action-button {
   cursor: pointer;
   font-family: Arial;
