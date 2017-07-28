@@ -7,7 +7,7 @@ The google API key in the .env is a public one provided by react-google-maps. Fe
 Run `yarn start`. The app will be available at port 3000.
 
 # Future additions
-I unfortunately lack the time to give this app a professional UX polish.
+I unfortunately lacked the time to give this app a professional UX polish.
 Things I want to add:
 * Can trigger places query by pressing enter button
 * Click on a list item highlights markerData
@@ -16,5 +16,6 @@ Things I want to add:
 * Better, more creative visualizations in general
 * Better error handling (i.e. highlighting red in field, isntead of annoying alert)
 * Figure out more consistent naming scheme between actions and reducers
+* Alphabetize objects, code naming details
 * Better visual design (I am admittedly not a UX designer)
 * CSS stylesheet is pretty basic. Ideally, it would be SASS (or CSS4! that composites multiple classes.
