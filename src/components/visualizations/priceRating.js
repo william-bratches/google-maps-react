@@ -7,7 +7,7 @@ import {
   VictoryTheme,
   VictoryChart
 } from 'victory';
-import { scatterPlot } from '../../lib/dataFormatter';
+import { priceRating } from '../../lib/dataFormatter';
 import '../../styles/style.css';
 
 class PriceRating extends Component {
@@ -21,7 +21,7 @@ class PriceRating extends Component {
           <VictoryScatter
             style={{ data: { fill: '#8EFAAF' } }}
             size={5}
-            data={scatterPlot(this.props.services.placesData)}
+            data={priceRating(this.props.services.placesData)}
           />
           <VictoryLabel
             angle="90"
@@ -35,6 +35,12 @@ class PriceRating extends Component {
             y="340"
             textAnchor="middle"
             text="Price Level"
+          />
+          <VictoryLabel
+            x="180"
+            y="20"
+            textAnchor="middle"
+            text={['Price vs Rating']}
           />
         </VictoryChart>
       </div>

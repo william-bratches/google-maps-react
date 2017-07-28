@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Search from './map/search';
 import Map from './map/index';
 import PriceRating from './visualizations/priceRating';
+import WordsHoursPrice from './visualizations/wordsHoursPrice';
 
 const Router = () =>
   <BrowserRouter>
@@ -10,6 +11,7 @@ const Router = () =>
       <Search />
       <Route exact path="/" component={Map} />
       <Route exact path="/priceRating" component={PriceRating} />
+      <Route exact path="/wordsHoursPrice" component={WordsHoursPrice} />
     </div>
   </BrowserRouter>;
 

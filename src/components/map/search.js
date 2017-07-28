@@ -45,7 +45,10 @@ class Search extends Component {
           Search
         </button>
         <nav>
-          <Link to="/priceRating">Dashboard</Link>
+          <Link to="/priceRating">pr</Link>
+        </nav>
+        <nav>
+          <Link to="/wordsHoursPrice">whp</Link>
         </nav>
       </div>
     );
