@@ -2,7 +2,6 @@ import { geoCode } from './geoCode';
 import { get, extend } from 'lodash';
 
 const requestDefaults = {
-  radius: '500',
   type: ['restaurant']
 };
 
