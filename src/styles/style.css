@@ -20,6 +20,13 @@
   margin: auto;
 }
 
+.list-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
 .undecorated {
   text-decoration: none;
   color: #ffffff;

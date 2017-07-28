@@ -14,7 +14,7 @@ class PlacesList extends Component {
     const places = get(this.props, 'services.placesData', []);
     return (
       <div>
-        <div className="container">
+        <div className="list-btn-container">
           <div
             onClick={() => this.dispatchSort('rating')}
             className="viz-button"
