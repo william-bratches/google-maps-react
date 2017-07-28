@@ -2,9 +2,19 @@ import React from 'react';
 
 const PlacesRow = ({ place }) =>
   <tr>
-    <td>{place.name}</td>
-    <td>{place.rating}</td>
-    <td>{place.price_level}</td>
-  </tr>
+    <td>
+      <div className="list-card">
+        <div>
+          {place.name}
+        </div>
+        <p className="yellow">
+          ★{place.rating}
+        </p>
+        <p className="green">
+          ${place.price_level || 'Unknown'}
+        </p>
+      </div>
+    </td>
+  </tr>;
 
 export default PlacesRow;

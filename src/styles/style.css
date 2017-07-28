@@ -6,6 +6,14 @@
   flex-basis: 25%;
 }
 
+.yellow {
+  color: #edcc39;
+}
+
+.green {
+  color: #069623;
+}
+
 .chart-container {
   width: 50%;
   height: 50%;
@@ -15,6 +23,20 @@
 .undecorated {
   text-decoration: none;
   color: #ffffff;
+}
+
+.list-card {
+  font-family: Arial;
+  text-align: center;
+  border: 2px outset;
+  width: 18em;
+  background-image: -webkit-linear-gradient(top, #00508a, #004a8a);
+  color: #ffffff;
+}
+
+.list-card p {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .viz-button {
