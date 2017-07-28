@@ -13,7 +13,6 @@ export const RANDOM_SELECTED = 'RANDOM_SELECTED';
 export default {
   initServices(props, map) {
     return dispatch => {
-      // set google in state
       dispatch(mapInitialized({ google: props.google, map }));
       // places api
       initPlaces(props, map)
