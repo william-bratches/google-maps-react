@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 import { get } from 'lodash';
 import services from '../../actions/services';
 import markers from '../../actions/markers';
-const NEW_YORK = { lat: 40.736381, lng: -74.030559 }
+const NEW_YORK = { lat: 40.736381, lng: -74.030559 };
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const DEFAULT_ZOOM = 14;
 
@@ -22,32 +22,42 @@ class MapView extends React.Component {
         zoom={DEFAULT_ZOOM}
         onReady={this.props.initServices}
         center={{
-          lat: NEW_YORK.lat, // TODO: object destructuring is not working here.
-          lng: NEW_YORK.lng,
+          lat: NEW_YORK.lat, // object destructuring is not working here.
+          lng: NEW_YORK.lng
         }}
-        onClick={this.props.mapClick}>
-
+        onClick={this.props.mapClick}
+      >
         {/* Marker Description */}
         <InfoWindow
           marker={this.props.markers.activeMarker}
-          visible={this.props.markers.showingInfoWindow}>
-            <div>
-              <h1>{this.props.markers.selectedPlace.title}</h1>
-              <p>{markerData.vicinity}</p>
-              <p>Rating: {markerData.rating}</p>
-              <p>Price Level: {priceLevel}</p>
-            </div>
+          visible={this.props.markers.showingInfoWindow}
+        >
+          <div>
+            <h1>
+              {this.props.markers.selectedPlace.title}
+            </h1>
+            <p>
+              {markerData.vicinity}
+            </p>
+            <p>
+              Rating: {markerData.rating}
+            </p>
+            <p>
+              Price Level: {priceLevel}
+            </p>
+          </div>
         </InfoWindow>
 
         {/* Markers */}
-       {places.map(place =>
+        {places.map(place =>
           <Marker
             key={place.id}
             onClick={this.props.markerClick}
             title={place.name}
             data={place}
             position={place.geometry.location}
-          />)}
+          />
+        )}
       </Map>
     );
   }
@@ -62,7 +72,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 const withGoogleState = GoogleApiWrapper({
-  apiKey: GOOGLE_API_KEY,
+  apiKey: GOOGLE_API_KEY
 })(MapView);
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withGoogleState));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(withGoogleState)
+);

@@ -12,14 +12,13 @@ const priceRating = places => {
 };
 
 const wordsHoursPrice = places => {
-  console.log(places);
   return places
     .filter(place => {
       return place.price_level;
     })
     .map(fplace => {
       return {
-        x: fplace.rating,
+        x: fplace.hoursOpen,
         y: fplace.price_level,
         amount: fplace.name.split(' ').length
       };

@@ -13,7 +13,7 @@ import services from '../../actions/services';
 import '../../styles/style.css';
 
 class WordsHoursPrice extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchDetails(this.props);
   }
 
@@ -30,8 +30,8 @@ class WordsHoursPrice extends Component {
               parent: { border: '1px solid #ccc' }
             }}
             bubbleProperty="amount"
-            maxBubbleSize={25}
-            minBubbleSize={5}
+            maxBubbleSize={10}
+            minBubbleSize={3}
             data={wordsHoursPrice(this.props.services.placesDetails)}
           />
           <VictoryLabel

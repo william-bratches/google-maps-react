@@ -26,7 +26,6 @@ class Search extends Component {
   }
 
   render() {
-    // TODO: get prettier and lint working
     return (
       <div>
         <input
@@ -49,6 +48,9 @@ class Search extends Component {
         </nav>
         <nav>
           <Link to="/wordsHoursPrice">whp</Link>
+        </nav>
+        <nav>
+          <Link to="/distancePrice">dp</Link>
         </nav>
       </div>
     );

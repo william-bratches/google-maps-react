@@ -5,7 +5,7 @@ export const PLACES_INITIALIZED = 'PLACES_INITIALIZED';
 export const MAP_INITIALIZED = 'MAP_INITIALIZED';
 export const PLACES_DATA_RECEIVED = 'PLACES_DATA_RECEIVED';
 export const GEOCODE_INITIALIZED = 'GEOCODE_INITIALIZED';
-export const CHART_INITIALIZED = 'GEOCODE_INITIALIZED';
+export const CHART_INITIALIZED = 'CHART_INITIALIZED';
 
 export default {
   initServices(props, map) {
@@ -17,8 +17,8 @@ export default {
         .then(placesService => {
           dispatch(placesInitialized(placesService));
           return initGeoCode(props);
-          // geocode api
         })
+        // geocode api
         .then(geoCodeService => {
           dispatch(geoCodeInitialized(geoCodeService));
         });

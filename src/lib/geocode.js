@@ -1,10 +1,8 @@
-// TODO: refactor so services do not live in state
-
-const initGeoCode = (props) => {
+const initGeoCode = props => {
   const { google } = props;
   const service = new google.maps.Geocoder();
   return Promise.resolve(service);
-}
+};
 
 const geoCode = (address, props) => {
   const { geoCodeService } = props.services;
@@ -14,9 +12,6 @@ const geoCode = (address, props) => {
       return resolve(results[0].geometry.location);
     });
   });
-}
+};
 
-export {
-  initGeoCode,
-  geoCode,
-}
+export { initGeoCode, geoCode };

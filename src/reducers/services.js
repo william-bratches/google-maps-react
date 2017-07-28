@@ -37,7 +37,7 @@ export default createReducer(initialState, {
   [CHART_INITIALIZED](state, action) {
     return {
       ...state,
-      geoCodeService: action.detailData
+      placesDetails: action.detailData
     };
   }
 });
