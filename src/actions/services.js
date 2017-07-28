@@ -1,6 +1,6 @@
 import { initPlaces, query, getMultiplePlaceDetails } from '../lib/places';
 import { initGeoCode } from '../lib/geoCode';
-import { sortPlaces } from '../lib/dataFormatter';
+import { sortPlaces, random } from '../lib/dataFormatter';
 
 export const PLACES_INITIALIZED = 'PLACES_INITIALIZED';
 export const MAP_INITIALIZED = 'MAP_INITIALIZED';
@@ -8,12 +8,13 @@ export const PLACES_DATA_RECEIVED = 'PLACES_DATA_RECEIVED';
 export const GEOCODE_INITIALIZED = 'GEOCODE_INITIALIZED';
 export const CHART_INITIALIZED = 'CHART_INITIALIZED';
 export const PLACES_SORTED = 'PLACES_SORTED';
+export const RANDOM_SELECTED = 'RANDOM_SELECTED';
 
 export default {
   initServices(props, map) {
     return dispatch => {
       // set google in state
-      dispatch(mapInitialized(props.google));
+      dispatch(mapInitialized({ google: props.google, map }));
       // places api
       initPlaces(props, map)
         .then(placesService => {
@@ -46,10 +47,20 @@ export default {
         dispatch(placesSorted(sortedPlaces));
       });
     };
+  },
+  selectRandom(props) {
+    return dispatch => {
+      random(props).then(randomPlace => {
+        if (randomPlace) {
+          dispatch(randomSelected(randomPlace));
+        }
+      });
+    };
   }
 };
 
-const mapInitialized = google => ({ type: MAP_INITIALIZED, google });
+const mapInitialized = data => ({ type: MAP_INITIALIZED, data });
+const randomSelected = randomPlace => ({ type: RANDOM_SELECTED, randomPlace });
 const placesInitialized = placesService => ({
   type: PLACES_INITIALIZED,
   placesService

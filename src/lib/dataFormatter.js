@@ -76,4 +76,17 @@ const distancePrice = (places, props) => {
   return { distances, prices };
 };
 
-export { priceRating, wordsHoursPrice, distancePrice, latLng, sortPlaces };
+const random = props => {
+  const places = get(props, 'services.placesData', []);
+  const randomPlace = places[Math.floor(Math.random() * places.length)];
+  return Promise.resolve(randomPlace);
+};
+
+export {
+  priceRating,
+  wordsHoursPrice,
+  distancePrice,
+  latLng,
+  sortPlaces,
+  random
+};

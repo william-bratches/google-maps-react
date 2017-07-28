@@ -4,7 +4,8 @@ import {
   PLACES_DATA_RECEIVED,
   GEOCODE_INITIALIZED,
   CHART_INITIALIZED,
-  PLACES_SORTED
+  PLACES_SORTED,
+  RANDOM_SELECTED
 } from '../actions/services';
 import createReducer from '../lib/createReducer';
 import { latLng } from '../lib/dataFormatter';
@@ -21,7 +22,8 @@ export default createReducer(initialState, {
   [MAP_INITIALIZED](state, action) {
     return {
       ...state,
-      googleService: action.google
+      map: action.data.map,
+      googleService: action.data.google
     };
   },
   [PLACES_INITIALIZED](state, action) {
@@ -55,6 +57,12 @@ export default createReducer(initialState, {
       ...state,
       placesData: action.sortedPlaces,
       sortDirection: state.sortDirection ? 0 : 1
+    };
+  },
+  [RANDOM_SELECTED](state, action) {
+    return {
+      ...state,
+      placesData: [action.randomPlace]
     };
   }
 });
